@@ -18,15 +18,15 @@ In this tutorial, we’ll build and deploy a Solana Staking Dapp from scratch us
 
 Follow the instructions below to set up the project on your system and install the required dependencies.
 
-- [Final Source Code]()
+- [Final Source Code](https://www.theblockchaincoders.com/sourceCode/build-and-deploy-a-solana-staking-dapp-or-rust-anchor-+-next.js-+-web3.js-or-solana-token-staking)
 
 #### Setup Video
 
-- [Final Code Setup video]()
+- [Final Code Setup video](https://youtu.be/UgtwjfCc83I?si=iFE3JF1veP6S1yLr)
 
 ```
   WATCH: Setup & Demo Of Project
-  URL:
+  URL: https://www.theblockchaincoders.com/sourceCode/build-and-deploy-a-solana-staking-dapp-or-rust-anchor-+-next.js-+-web3.js-or-solana-token-staking
 ```
 
 #### CREATE YOUR SOLANA TOKEN
@@ -37,6 +37,7 @@ If you don't have a token, check out this project to create and launch your own 
   PROJECT: SOLANA TOKEN CREATOR DAPP
   WATCH: https://youtu.be/P6UDXw34rBc?si=1CNSDr4oBAEXfXiD
   SOURCE CODE URL: https://www.theblockchaincoders.com/sourceCode/advanced-solana-token-creator-dapp
+  LIVE Demo: https://theblockchaincoders-solana.netlify.app/
 ```
 
 #### PRO BLOCKCHAIN
@@ -44,9 +45,8 @@ If you don't have a token, check out this project to create and launch your own 
 Master blockchain development with 80+ hours of content and build industry-ready projects for deployment.
 
 ```
-  PROJECT: SOLANA TOKEN CREATOR DAPP
-  WATCH: https://youtu.be/P6UDXw34rBc?si=1CNSDr4oBAEXfXiD
-  SOURCE CODE URL: https://www.theblockchaincoders.com/sourceCode/advanced-solana-token-creator-dapp
+  Course: Pro NFT Marketplace Project 80+ Hours
+  PRO BLOCKCHAIN: https://www.theblockchaincoders.com/pro-nft-marketplace
 ```
 
 #### Install Vs Code Editor
@@ -60,7 +60,6 @@ Master blockchain development with 80+ hours of content and build industry-ready
 
 ```
   NodeJs:  LATEST
-  NPM:
   URL: https://nodejs.org/en/download
 ```
 
@@ -68,7 +67,7 @@ Master blockchain development with 80+ hours of content and build industry-ready
 
 ```
   GET: Project Starter File Download
-  URL:
+  URL: https://www.theblockchaincoders.com/sourceCode/build-and-deploy-a-solana-staking-dapp-or-rust-anchor-+-next.js-+-web3.js-or-solana-token-staking
 ```
 
 #### ALCHEMY

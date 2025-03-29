@@ -1,0 +1,133 @@
+{
+  "version": "0.1.0",
+  "name": "solana_staking",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        { "name": "stakingPool", "isMut": true, "isSigner": false },
+        { "name": "userStake", "isMut": true, "isSigner": false },
+        { "name": "tokenMint", "isMut": false, "isSigner": false },
+        { "name": "rewardMint", "isMut": false, "isSigner": false },
+        { "name": "stakingVault", "isMut": false, "isSigner": false },
+        { "name": "rewardVault", "isMut": false, "isSigner": false },
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "rewardRate", "type": "u64" }]
+    },
+    {
+      "name": "stake",
+      "accounts": [
+        { "name": "stakingPool", "isMut": true, "isSigner": false },
+        { "name": "userStake", "isMut": true, "isSigner": false },
+        { "name": "stakingVault", "isMut": true, "isSigner": false },
+        { "name": "userTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "withdrawTokens",
+      "accounts": [
+        { "name": "stakingPool", "isMut": true, "isSigner": false },
+        { "name": "stakingVault", "isMut": true, "isSigner": false },
+        { "name": "adminTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "unstake",
+      "accounts": [
+        { "name": "stakingPool", "isMut": true, "isSigner": false },
+        { "name": "userStake", "isMut": true, "isSigner": false },
+        { "name": "stakingVault", "isMut": true, "isSigner": false },
+        { "name": "userTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "claimRewards",
+      "accounts": [
+        { "name": "stakingPool", "isMut": true, "isSigner": false },
+        { "name": "userStake", "isMut": true, "isSigner": false },
+        { "name": "rewardVault", "isMut": true, "isSigner": false },
+        { "name": "userRewardAccount", "isMut": true, "isSigner": false },
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "addRewards",
+      "accounts": [
+        { "name": "stakingPool", "isMut": true, "isSigner": false },
+        { "name": "rewardVault", "isMut": true, "isSigner": false },
+        { "name": "funderRewardAccount", "isMut": true, "isSigner": false },
+        { "name": "funder", "isMut": true, "isSigner": true },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "updateRewardRate",
+      "accounts": [
+        { "name": "stakingPool", "isMut": true, "isSigner": false },
+        { "name": "authority", "isMut": true, "isSigner": true }
+      ],
+      "args": [{ "name": "newRate", "type": "u64" }]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "StakingPool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "publicKey" },
+          { "name": "tokenMint", "type": "publicKey" },
+          { "name": "rewardMint", "type": "publicKey" },
+          { "name": "stakingVault", "type": "publicKey" },
+          { "name": "rewardVault", "type": "publicKey" },
+          { "name": "rewardRate", "type": "u64" },
+          { "name": "lastUpdateTime", "type": "i64" },
+          { "name": "rewardPerTokenStored", "type": "u128" },
+          { "name": "totalStaked", "type": "u64" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    },
+    {
+      "name": "UserStake",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "user", "type": "publicKey" },
+          { "name": "pool", "type": "publicKey" },
+          { "name": "stakedAmount", "type": "u64" },
+          { "name": "rewardPerTokenPaid", "type": "u128" },
+          { "name": "rewardPending", "type": "u64" },
+          { "name": "lastStakeTime", "type": "i64" }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    { "code": 6000, "name": "MathOverflow", "msg": "Math operation overflow" },
+    { "code": 6001, "name": "ZeroAmount", "msg": "Zero amount not allowed" },
+    {
+      "code": 6002,
+      "name": "InsufficientStakedAmount",
+      "msg": "Insufficient staked amount"
+    },
+    { "code": 6003, "name": "NoRewardsToClaim", "msg": "No rewards to claim" },
+    { "code": 6004, "name": "Unauthorized", "msg": "Unauthorized access" }
+  ]
+}
